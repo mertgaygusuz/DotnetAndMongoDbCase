@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using System.Text.Json.Serialization;
 
 namespace DotnetMongoCase.Models.Contacts
 {
@@ -15,9 +14,12 @@ namespace DotnetMongoCase.Models.Contacts
 
         [BsonIgnoreIfNull]
         public string? CompanyName { get; set; }
+        public List<CustomField> CustomFields { get; set; } = new();
+    }
 
-        //dynamic fields 
-        /* [JsonConverter(typeof(JsonDocumentConverter))]
-        public Dictionary<string, object> DynamicFields { get; set; } */
+    public class CustomField
+    {
+        public string Key { get; set; }
+        public Object Value { get; set; }
     }
 }
